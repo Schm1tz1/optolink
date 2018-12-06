@@ -3,6 +3,7 @@
 conf/
 logs/
 .settings/
+.idea/
 optolink.xml
 start.bat
 start.sh

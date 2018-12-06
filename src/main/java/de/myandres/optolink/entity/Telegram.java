@@ -5,7 +5,7 @@
  * are made available under the terms of the GNU Lesser General Public License
  * (LGPL) version 3.0 which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.html
- *  
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
 public class Telegram {
 
 	static Logger log = LoggerFactory.getLogger(Telegram.class);
-	
-	// Types of Viessmann 
+
+	// Types of Viessmann
 	public final static byte BOOLEAN =   1; // 1 Byte -> boolean
 	public final static byte BYTE    =   2; // 1 Byte -> short
 	public final static byte UBYTE   =   3; // 1 Byte -> short
@@ -32,40 +32,40 @@ public class Telegram {
     public final static byte TIMER =     9; // 8 Byte -> timer
     public final static byte DUMP =      99; // Dump for unknown Telegram-Type
 
-    
-	private int address; 
+
+	private int address;
 	private byte type;
 	private short length;
-	private short divider; 
+	private short divider;
 
-	
+
 	Telegram() {
     	address = 0;
 		type = Telegram.DUMP;
 		length = 0;
-		divider = 1; 
+		divider = 1;
 	}
-	
+
 	public Telegram(String address, String type, String divider) {
 
     	setAddress(address);
 		setType(type);
 		setDivider(divider);
 	}
-	
+
 	public Telegram(Telegram telegram) {
 
-		this.address = telegram.address; 
+		this.address = telegram.address;
 		this.length = telegram.length;
 		this.type = telegram.type;
-		this.divider = telegram.divider; 
-		
+		this.divider = telegram.divider;
+
 	}
 
- 
+
 	public void setAddress(String address) {
 		log.trace("----------------------------------------");
-		
+
 		if (address==null) {
 			log.error("Telegram Address not set") ;
 			this.address=0;
@@ -76,11 +76,11 @@ public class Telegram {
 				log.error("Invalid  Address format: {}", address);
 				this.address=0;
 			}
-		} 
-    	log.trace("Set Adress to {}({})", address, this.address);	
+		}
+    	log.trace("Set Adress to {}({})", address, this.address);
 	}
 
-	
+
 
 	public void setType(String type) {
 		if (type == null)
@@ -133,15 +133,15 @@ public class Telegram {
 		}
 		log.trace("Set Type to {}({}) length={}", type, this.type, length);
 	}
-	
+
 	public void setDivider(String divider) {
 		if (divider==null) {
-			log.debug("divider not set - set to default: 1"); 
+			log.debug("divider not set - set to default: 1");
 		    this.divider=1;
 		} else {
 		  try {
 			this.divider=Short.parseShort(divider);
-			} 
+			}
 			catch (NumberFormatException e) {
 				log.error("Invalid  divider format: {} - set to default: 1", divider);
 				this.divider=1;
@@ -149,17 +149,17 @@ public class Telegram {
 		}
 		log.trace("Set dividerider to {}", this.divider);
 	}
-	
+
 
 	public int getAddress() {
 		return address;
 	}
-	
+
 	public String getAddressAsString() {
 		return String.format("%04X", address);
 	}
-	
-	
+
+
 	public int getLength() {
 		return length;
 	}
