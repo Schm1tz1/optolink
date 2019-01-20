@@ -1,4 +1,4 @@
-# optolink [![Build Status](https://travis-ci.org/Schm1tz1/optolink.svg?branch=master)](https://travis-ci.com/Schm1tz1/optolink)
+# optolink [![Build Status](https://travis-ci.org/Schm1tz1/optolink.svg?branch=master)](https://travis-ci.org/Schm1tz1/optolink)
 
 Viessmann heating systems with vitotronic has a optolink Interface for maintenance. 
 This interface can use for get/set data in the heating system.
