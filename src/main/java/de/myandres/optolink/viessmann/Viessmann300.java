@@ -224,7 +224,7 @@ public class Viessmann300 implements ViessmannProtocol {
         returnChecksum = returnChecksum & 0xFF;         //expected checksum 8 low bit's .
         int bufferChecksum=optolinkInterface.read();    // read checksum
         if (returnChecksum != bufferChecksum && log.isErrorEnabled()) {
-            log.error(String.format("Checksumme (%#02X) expect, but %#02X received", returnChecksum, bufferChecksum));
+            log.error(String.format("Checksum (%#02X) expected, but %#02X received", returnChecksum, bufferChecksum));
         }
         log.debug("Data from OptolinkInterface got [OK]");
         if (log.isTraceEnabled()) {
